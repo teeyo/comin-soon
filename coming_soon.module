@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Makes it easier to add a coming soon page to your website.
+ */
+
+function coming_soon_theme($existing, $type, $theme, $path) {
+  return array(
+    'coming_soon_predefined_page' => array(
+      'variables' => array('config' => NULL, 'background' => NULL, 'form' => NULL, 'logo' => NULL),
+      ),
+    'coming_soon_page' =>  array(
+      'render element' => 'page'
+      ),
+    );
+}
+
+function coming_soon_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ('coming_soon.index' == \Drupal::routeMatch()->getRouteName()) {
+    $suggestions[] = 'coming_soon_page';
+  }
+}
+
+function coming_soon_page_attachments(array &$page) {
+  if ('coming_soon.index' == \Drupal::routeMatch()->getRouteName()) {
+    $page['#attached']['library'][] = 'coming_soon/coming-soon-predefined';
+  }
+}

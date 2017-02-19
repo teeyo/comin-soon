@@ -1,0 +1,4 @@
+administer coming soon:
+  title: 'Administer coming soon'
+  description: 'Administer the coming soon module.'
+  restrict access: TRUE

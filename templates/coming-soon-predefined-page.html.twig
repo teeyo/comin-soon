@@ -1,0 +1,51 @@
+<div id="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <img alt="{{ 'Home'|t }}" src="{{ logo }}"/>
+        <h1>{{ config.get('coming_soon_heading') }}</h1>
+        <h2 class="subtitle">{{ config.get('coming_soon_body') }}</h2>
+        <div id="countdown"></div>
+        {% if (config.get('coming_soon_notification')) %}
+        {{ form }}
+        {{ messages }}
+        {% endif %}  
+        <div class="social">
+          {% if config.get('coming_soon_facebook') %}
+          <a href="{{ config.get('coming_soon_facebook') }}" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          {% endif %}
+          {% if config.get('coming_soon_twitter') %}
+          <a href="{{ config.get('coming_soon_twitter') }}" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          {% endif %}
+          {% if config.get('coming_soon_googleplus') %}
+          <a href="{{ config.get('coming_soon_googleplus') }}" title="Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+          {% endif %}
+          {% if config.get('coming_soon_linkedin') %}
+          <a href="{{ config.get('coming_soon_linkedin') }}" title="Linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <p class="copyright">&copy; {{ config.get('coming_soon_copyrights') }}</p>
+        <div class="credits">
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+<script type="text/javascript">
+  {% if background.getFileUri() %}
+  document.getElementsByClassName('path-coming-soon')[0].style.background = "url({{ file_url(background.getFileUri()) }}) fixed";
+  {% endif %}
+  var checkExist = setInterval(function() {
+    if (jQuery('#countdown').length) {
+      clearInterval(checkExist);
+      jQuery('#countdown').countdown('{{ config.get('coming_soon_end_date')|date("Y/m/d") }}', function(event) {
+        jQuery(this).html(event.strftime('<strong>%w</strong> weeks <strong>%d</strong> days <br /> %H:%M:%S'));
+      });
+    }
+  }, 100);
+</script>

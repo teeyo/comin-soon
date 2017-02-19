@@ -1,0 +1,5 @@
+services:
+  coming_soon_redirect_manager:
+    class: Drupal\coming_soon\EventSubscriber\ComingSoonRedirectManager
+    tags:
+      - { name: 'event_subscriber' }

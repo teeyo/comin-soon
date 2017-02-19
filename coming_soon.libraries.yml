@@ -1,0 +1,13 @@
+coming-soon-predefined:
+  version: "1.0.1"
+  css:
+    theme:
+      assets/css/bootstrap.css: {}
+      assets/css/bootstrap-theme.css: {}
+      assets/css/font-awesome.css: {}
+      assets/css/style.css: {}
+  js:
+    assets/js/bootstrap.min.js: {}
+    assets/js/jquery.countdown.min.js: {}
+  dependencies:
+    - core/jquery
